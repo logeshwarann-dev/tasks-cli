@@ -19,3 +19,14 @@ func ReadJSONFile(filePath string, tasks *models.Tasks) error {
 
 	return nil
 }
+
+func CheckIfFileExists(filePath string) bool {
+
+	file, err := os.OpenFile(filePath, os.O_RDONLY, 0644)
+	if err != nil {
+		return false
+	}
+	defer file.Close()
+	return true
+
+}

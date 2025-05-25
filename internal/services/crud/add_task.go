@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/logeshwarann-dev/taskcli/internal/models"
@@ -11,8 +12,10 @@ func AddTask(taskDesc string) error {
 
 	var newTask models.Task
 	var allTasks models.Tasks
-	if err := utils.ReadJSONFile(models.FilePath, &allTasks); err != nil {
-		return err
+	if utils.CheckIfFileExists(models.FilePath) {
+		if err := utils.ReadJSONFile(models.FilePath, &allTasks); err != nil {
+			return err
+		}
 	}
 
 	lastId := getLastTaskId(allTasks)
@@ -23,6 +26,8 @@ func AddTask(taskDesc string) error {
 	newTask.UpdatedAt = time.Now().Local()
 
 	allTasks.TasksList = append(allTasks.TasksList, newTask)
+
+	fmt.Println(allTasks.TasksList)
 
 	if err := utils.WriteToFile(models.FilePath, allTasks); err != nil {
 		return err

@@ -14,6 +14,7 @@ func WriteToFile(filePath string, tasksList models.Tasks) error {
 	if err != nil {
 		return fmt.Errorf("error while opening file: %v", err)
 	}
+	defer file.Close()
 
 	tasksByteArr, err := json.Marshal(tasksList)
 	if err != nil {

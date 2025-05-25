@@ -23,15 +23,15 @@ import (
 // 	return nil
 // }
 
-func ReadCommandArgs() error {
+func ReadCommandArgs() ([]string, error) {
 
 	flag.Parse()
 	cmdArgs := flag.Args()
 	if err := VerifyUserInput(cmdArgs); err != nil {
-		return err
+		return nil, err
 	}
 	fmt.Println("Command Args: ", cmdArgs)
-	return nil
+	return cmdArgs, nil
 }
 func AddedTask(taskId int) {
 	fmt.Printf("Task Added Successfully (ID: %d)\n", taskId)
