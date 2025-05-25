@@ -9,3 +9,7 @@ type Task struct {
 	createdAt   time.Time
 	updatedAt   time.Time
 }
+
+type Tasks struct {
+	TasksList []Task
+}

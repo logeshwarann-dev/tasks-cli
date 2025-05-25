@@ -1,0 +1,27 @@
+
+
+TASK CLI(Command Line Interface) App:
+
+Functional Requirements:
+ - Add TASK
+ - Delete TASK
+ - Update TASK
+ - Get TASK
+
+Non-Functional Requirements:
+ - CLI based program
+ - task-cli cmd should be used everytime
+ - syntax: 
+    1. add task:
+        task-cli add "<string>"
+        returns task id
+    2. update task:
+        task-cli update <id> "<string>"
+    3. delete task:
+        task-cli delete <id>
+    4. list task:
+        task-cli list <status> (eg: done, todo, in-progress)
+    5. change status:
+        task-cli mark-in-progress
+        task-cli mark-done
+

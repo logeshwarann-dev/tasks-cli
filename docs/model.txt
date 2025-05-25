@@ -1,0 +1,47 @@
+
+
+JSON:
+
+Single Task:
+
+{
+    "id": 1,
+    "description": "Develop an App",
+    "status": "in-progress",
+    "createdAt": 2025-05-18,
+    "updatedAt": 2025-05-18
+}
+
+List of Tasks:
+
+[
+    {
+        "id": 1,
+        "description": "Develop an App",
+        "status": "in-progress",
+        "createdAt": 2025-05-18,
+        "updatedAt": 2025-05-18
+    },
+    {
+        "id": 2,
+        "description": "Deploy an App",
+        "status": "todo",
+        "createdAt": 2025-05-18,
+        "updatedAt": 2025-05-18
+    },
+
+]
+
+status list of Tasks:
+
+{
+    "done": [
+
+    ],
+    "todo": [
+
+    ],
+    "in-progress": [
+        
+    ]
+}

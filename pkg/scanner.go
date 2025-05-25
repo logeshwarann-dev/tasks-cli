@@ -1,5 +1,44 @@
 package pkg
 
-func ReadInput() {
+import (
+	"flag"
+	"fmt"
+)
 
+// var CmdReader *bufio.Reader
+
+// func init() {
+// 	CmdReader = bufio.NewReader(os.Stdin)
+// }
+
+// func ReadInput() error {
+// 	userInput, err := CmdReader.ReadString('\n')
+// 	if err != nil {
+// 		log.Fatal("Error reading user input")
+// 		return err
+// 	}
+// 	userInput = strings.TrimSpace(userInput)
+// 	fmt.Println("User Input: ", userInput)
+// 	// models.CmdInputSlice = strings.Split(userInput, " ")
+// 	return nil
+// }
+
+func ReadCommandArgs() error {
+
+	cmdArgs := flag.Args()
+
+	fmt.Println("Command Args: ", cmdArgs)
+
+	return nil
+}
+func AddedTask(taskId int) {
+	fmt.Printf("Task Added Successfully (ID: %d)\n", taskId)
+}
+
+func UpdatedTask(taskId int) {
+	fmt.Printf("Task Updated Successfully (ID: %d)\n", taskId)
+}
+
+func PrintError(err error) {
+	fmt.Println("Error occurred: ", err.Error())
 }
