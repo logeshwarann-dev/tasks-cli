@@ -25,10 +25,12 @@ import (
 
 func ReadCommandArgs() error {
 
+	flag.Parse()
 	cmdArgs := flag.Args()
-
+	if err := VerifyUserInput(cmdArgs); err != nil {
+		return err
+	}
 	fmt.Println("Command Args: ", cmdArgs)
-
 	return nil
 }
 func AddedTask(taskId int) {

@@ -1,17 +1,12 @@
 package main
 
 import (
-	"os"
-
-	"github.com/logeshwarann-dev/taskcli/pkg"
+	"github.com/logeshwarann-dev/taskcli/cmd/app"
 )
 
 func main() {
 
-	if err := pkg.ReadCommandArgs(); err != nil {
-		pkg.PrintError(err)
-		os.Exit(1)
-	}
+	app.Start()
 
 	// pkg.VerifyUserInput()
 
