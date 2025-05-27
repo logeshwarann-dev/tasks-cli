@@ -75,7 +75,11 @@ func Start() {
 		}
 		services.PrintTaskStatus(taskId)
 	case models.ListCommand:
-
+		status := services.GetStatusFlag(CommandArgs)
+		if err := services.ListTask(status, models.FilePath); err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
 	default:
 		log.Fatal("Invalid command")
 	}

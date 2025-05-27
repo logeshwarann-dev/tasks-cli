@@ -19,4 +19,5 @@ const (
 	StatusDone       = "done"
 	StatusTodo       = "todo"
 	StatusInProgress = "in-progress"
+	EmptyStatus      = ""
 )
