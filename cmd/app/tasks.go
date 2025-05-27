@@ -52,6 +52,30 @@ func Start() {
 			os.Exit(1)
 		}
 		services.PrintDeletedTask(taskId)
+	case models.MarkDone:
+		taskId, err := strconv.Atoi(CommandArgs[1])
+		if err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		if err := services.UpdateTask(taskId, models.StatusDone, models.FilePath); err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		services.PrintTaskStatus(taskId)
+	case models.MarkInProgress:
+		taskId, err := strconv.Atoi(CommandArgs[1])
+		if err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		if err := services.UpdateTask(taskId, models.StatusInProgress, models.FilePath); err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		services.PrintTaskStatus(taskId)
+	case models.ListCommand:
+
 	default:
 		log.Fatal("Invalid command")
 	}
