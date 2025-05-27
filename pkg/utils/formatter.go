@@ -2,6 +2,8 @@ package utils
 
 import (
 	"fmt"
+	"log"
+	"os"
 	"unicode"
 )
 
@@ -23,4 +25,12 @@ func ConvSliceToStr(strSlice []string) string {
 
 	return fullString
 
+}
+
+func ClearContentsOfFile(filePath string) error {
+	if err := os.Truncate(filePath, 0); err != nil {
+		log.Printf("Failed to truncate: %v", err)
+		return err
+	}
+	return nil
 }

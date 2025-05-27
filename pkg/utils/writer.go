@@ -10,6 +10,10 @@ import (
 
 func WriteToFile(filePath string, tasksList models.Tasks) error {
 
+	if err := ClearContentsOfFile(filePath); err != nil {
+		return err
+	}
+
 	file, err := os.OpenFile(filePath, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		return fmt.Errorf("error while opening file: %v", err)

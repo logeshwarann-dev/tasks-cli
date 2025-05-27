@@ -12,7 +12,6 @@ import (
 )
 
 func Start() {
-
 	var CommandArgs []string
 	var err error
 	if CommandArgs, err = pkg.ReadCommandArgs(); err != nil {
@@ -58,7 +57,7 @@ func Start() {
 			pkg.PrintError(err)
 			os.Exit(1)
 		}
-		if err := services.UpdateTask(taskId, models.StatusDone, models.FilePath); err != nil {
+		if err := services.MarkStatusOfTask(taskId, models.StatusDone, models.FilePath); err != nil {
 			pkg.PrintError(err)
 			os.Exit(1)
 		}
@@ -69,7 +68,7 @@ func Start() {
 			pkg.PrintError(err)
 			os.Exit(1)
 		}
-		if err := services.UpdateTask(taskId, models.StatusInProgress, models.FilePath); err != nil {
+		if err := services.MarkStatusOfTask(taskId, models.StatusInProgress, models.FilePath); err != nil {
 			pkg.PrintError(err)
 			os.Exit(1)
 		}

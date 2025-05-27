@@ -31,6 +31,7 @@ func DeleteTask(taskId int, filePath string) error {
 			isTaskIdPresent = true
 		}
 	}
+	// fmt.Println("After Deleting: ", allTasks.TasksList)
 	if !isTaskIdPresent {
 		return errors.New("task id not found")
 	}
