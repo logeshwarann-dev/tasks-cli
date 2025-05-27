@@ -1,9 +1,9 @@
 package app
 
 import (
-	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	"github.com/logeshwarann-dev/taskcli/internal/models"
 	services "github.com/logeshwarann-dev/taskcli/internal/services/crud"
@@ -22,12 +22,36 @@ func Start() {
 
 	switch CommandArgs[0] {
 	case models.AddCommand:
-		fmt.Println("Inside Add Command case")
 		taskDesc := utils.ConvSliceToStr(CommandArgs[1:])
-		if err := services.AddTask(taskDesc); err != nil {
+		taskId, err := services.AddTask(taskDesc, models.FilePath)
+		if err != nil {
 			pkg.PrintError(err)
 			os.Exit(1)
 		}
+		services.PrintAddedTask(taskId)
+	case models.UpdateCommand:
+		taskId, err := strconv.Atoi(CommandArgs[1])
+		if err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		taskDesc := utils.ConvSliceToStr(CommandArgs[2:])
+		if err := services.UpdateTask(taskId, taskDesc, models.FilePath); err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		services.PrintUpdatedTask(taskId)
+	case models.DeleteCommand:
+		taskId, err := strconv.Atoi(CommandArgs[1])
+		if err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		if err := services.DeleteTask(taskId, models.FilePath); err != nil {
+			pkg.PrintError(err)
+			os.Exit(1)
+		}
+		services.PrintDeletedTask(taskId)
 	default:
 		log.Fatal("Invalid command")
 	}

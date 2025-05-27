@@ -30,15 +30,8 @@ func ReadCommandArgs() ([]string, error) {
 	if err := VerifyUserInput(cmdArgs); err != nil {
 		return nil, err
 	}
-	fmt.Println("Command Args: ", cmdArgs)
+	// fmt.Println("Command Args: ", cmdArgs)
 	return cmdArgs, nil
-}
-func AddedTask(taskId int) {
-	fmt.Printf("Task Added Successfully (ID: %d)\n", taskId)
-}
-
-func UpdatedTask(taskId int) {
-	fmt.Printf("Task Updated Successfully (ID: %d)\n", taskId)
 }
 
 func PrintError(err error) {
